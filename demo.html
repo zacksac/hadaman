@@ -1,0 +1,261 @@
+<html>
+<head>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+	<script src="ui/jquery.js"></script>
+  <script src="ui/jquery.panzoom.js"></script>
+	<script src="ui/jquery-ui.js"></script>
+	
+	<script src="ui/jquery.ui.rotatable.min.js"></script>
+	<link rel="stylesheet" href="ui/jquery.ui.rotatable.css">
+	<script src="ui/jquery.mousewheel.js"></script>
+	
+</head>
+<body>
+
+   
+<div class="container">
+     <div class='mmenu' align='center'>
+     <input type='button' value='new'>
+      <input type='button' button value='import images'>
+       <input type='button' button value='save'>
+     </div>   
+        <div class="leftsidebar">
+          <div id="img" class='drg img'>
+          <img src='img/treebranchstraightupanddown.png'>
+          </div>
+          <div id="img1" class='drg img'>
+          <img src='img/treebranchleftcurve.png'>
+          </div>
+          <div id="img2" class='drg img'>
+          <img src='img/treeframeleafourchild.png'>
+          </div>
+
+          <div id="img3" class='drg img'>
+          <img src='img/FrameBudframe(L).png'>
+          </div>
+           <div id="img4" class='drg img'>
+          <img src='img/FrameBudframe(R).png'>
+          </div><div id="img5" class='drg img'>
+          <img src='img/FrameBudnon-fame(L).png'>
+          </div><div id="img6" class='drg img'>
+          <img src='img/Frame, Bud non-frame (R).png'>
+          </div>
+
+         <div id="img7" class='drg img'>
+          <img src='img/Tree Banch Left Curve with Bud End.png'>
+          </div><div id="img8" class='drg img'>
+          <img src='img/Tree Banch Right Curve with Bud End.png'>
+          </div><div id="img9" class='drg img'>
+          <img src='img/treebranchleftcurve.png'>
+          </div><div id="img10" class='drg img'>
+          <img src='img/Tree Branch left curve with flower end.png'>
+          </div><div id="img11" class='drg img'>
+          <img src='img/Tree Branch right curve flower end.png'>
+          </div>
+
+          <div id="img12" class='drg img'>
+          <img src='img/Tree, Frame Leaf Adopted child L-7 (R).png'>
+          </div><div id="img13" class='drg img'>
+          <img src='img/Tree, Frame Leaf Adopted Child L-7  (L).png'>
+          </div><div id="img14" class='drg img'>
+          <img src='img/Tree, Frame Leaf Half Sibling L-6 (L).png'>
+          </div><div id="img15" class='drg img'>
+          <img src='img/Tree, Frame Leaf Half Sibling L-6 (R).png'>
+          </div><div id="img16" class='drg img'>
+          <img src='img/treeframeleafourchild.png'>
+          </div>
+
+          <div id="img17" class='drg img'>
+          <img src='img/Tree, Frame Leaf Stepchild (L-8) (L).png'>
+          </div><div id="img18" class='drg img'>
+          <img src='img/Tree, Frame Leaf Stepchild L-8 (R).png'>
+          </div><div id="img19" class='drg img'>
+          <img src='img/Tree, Frame Leaf Triplets  L-10 (L).png'>
+          </div><div id="img20" class='drg img'>
+          <img src='img/Tree, Frame Leaf Triplets L-10 (R).png'>
+          </div><div id="img21" class='drg img'>
+          <img src='img/Tree,  Frame Leaf Twins L-9 (L).png'>
+          </div><div id="img22" class='drg img'>
+          <img src='img/Tree,  Frame Leaf Twins L-9 (R).png'>
+          </div>
+
+          <div id="img23" class='drg img'>
+          <img src='img/Tree, Junior Heart frame.png'>
+          </div><div id="img24" class='drg img'>
+          <img src='img/Tree, Junior Heart Non-Frame.png'>
+          </div><div id="img25" class='drg img'>
+          <img src='img/Tree, Junior Love knot Frame.png'>
+          </div><div id="img26" class='drg img'>
+          <img src='img/Tree, Leaf Frame L-1 (R).png'>
+          </div><div id="img27" class='drg img'>
+          <img src='img/Tree, Leaf Frame L-2 (R).png'>
+          </div><div id="img28" class='drg img'>
+          <img src='img/Tree, Senior Heart Frame.png'>
+          </div><div id="img29" class='drg img'>
+          <img src='img/Tree, Senior Heart  non-frame.png'>
+          </div><div id="img30" class='drg img'>
+          <img src='img/Tree, Senior Love Knot frame.png'>
+          </div>
+
+
+
+        </div>
+        <section class="rightsidebar" id="focal" >
+            <h1 align=center>Mousewheel to zoom </h1>
+            <div class="parent">
+              <div class="panzoom">
+               <img src="img/treetemplate.svg">
+
+              </div>
+            </div>
+        </section>
+
+</div>
+
+   <input id="file" name="img" type="file" >
+<div class="upload-preview"></div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+$(".rightsidebar").scrollLeft(180);
+       
+      $(".img").click(function(){
+x=$(this).clone();
+  console.log(x)
+  $(x).appendTo($('.panzoom'));
+  $(x).addClass("imgs");
+  $(x).css("position","absolute");
+  $(x).css("top","20%");
+  $(x).css("left","40%");
+  $(x).draggable();
+  $(x).rotatable();
+
+})
+
+      
+        $('.imgs').draggable({
+    containment: '.rightsidebar',
+    helper: 'clone',
+     
+    drag: function(event, ui) {
+    	console.log(ui)
+        console.log(ui.helper)
+        $(ui.helper).find('.ui-rotatable-handle').remove();
+        $(ui.helper).clone(true).addClass('box-clone').appendTo('.panzoom');
+        console.log($(ui.helper));
+        console.log('test')
+        
+        $('.box-clone').draggable();
+        $('.box-clone').rotatable();
+        
+    }});
+         
+
+        
+        
+		
+		});
+    (function() {
+          var $section = $('#focal');
+          var $panzoom = $section.find('.panzoom').panzoom();
+          $panzoom.parent().on('mousewheel.focal', function( e ) {
+            e.preventDefault();
+            var delta = e.delta || e.originalEvent.wheelDelta;
+            var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            $panzoom.panzoom('zoom', zoomOut, {
+              increment: 0.1,
+              animate: false,
+              disablePan: true,
+              focal: e
+            });
+          });
+        })();
+
+
+$(document).ready(function(){
+      $("#file").change(function(event){
+      // console.log("check_calling_fn");
+       id_generated=id_generator("imagefield1");
+       var input = $(event.currentTarget);
+       var file = input[0].files[0];
+       var reader = new FileReader();
+       reader.onload = function(e){
+           image_base64 = e.target.result;
+          
+           $(".upload-preview").append("<div class='image_preview_div'><img style='width:100px;height:100px;' src="+image_base64+"><input class='"+id_generated+"' type='hidden' name='image_array[]' value='"+image_base64+"'><span  class='delete_image_bit "+id_generated+"'></span></div>")
+           //$(".upload-preview").append("")
+         
+       };
+       reader.readAsDataURL(file);
+    });
+})
+       function id_generator(positionname){
+// console.log("id_generator");
+    var positionint=positionname.replace(/[a-zA-Z]/g, "");
+    var newposition_int = parseInt(positionint)+1;
+    var newposition="imagefield"+newposition_int;
+    // var check_already_position=$( "body" ).hasClass( newposition );
+    var check_already_position=$('body').find('.'+newposition).length;
+    // console.log(newposition);
+    // console.log(check_already_position);
+      if(check_already_position > 0){
+        // console.log("alraedy have postion");
+      return id_generator(newposition);
+      }
+      return newposition;
+  
+}
+	</script>
+<style>
+.container{
+    width:1200px;
+    position: relative;
+}
+
+.leftsidebar
+{
+    width: 15%;
+    position: relative;
+    float: left;
+    overflow: scroll;
+
+    height:800px;
+}
+.rightsidebar
+{
+    width :80%;
+    
+    float: left;
+    height: 1100px;
+}
+.drg img {
+  cursor: crosshair;
+  height: 100px;
+  width: 100px;
+}
+.rightsidebar > img {
+  margin: 21% 0 0 29%;
+  width: 30%;
+}
+.mmenu
+{
+  width: 100%;
+
+}
+#focal{
+  border: 2px solid;
+  overflow: scroll;
+}
+.panzoom > img{
+	margin-top:20%;
+	margin-left: 25%;
+  width: auto;
+}
+.parent{
+	width:1300px;
+}
+.panzoom-parent .panzoom { border: 2px dashed #666; }
+</style>
